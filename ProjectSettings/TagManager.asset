@@ -6,6 +6,9 @@ TagManager:
   tags:
   - RedItem
   - BlueItem
+  - PurpleItem
+  - YellowItem
+  - OrangeItem
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TradePoint : MonoBehaviour
 {
+    public UnityEvent OnTrade;
     [SerializeField]
     string _tag = "item";
 
@@ -31,6 +33,7 @@ public class TradePoint : MonoBehaviour
         //Debug.Log("Trigger entered by " + other.name + " tagged " + other.tag);
         if(other.tag == _tag && _tradesCompleted < _numberOfTrades)
         {
+            OnTrade.Invoke();
             if (_destroyItem) { Destroy(other.gameObject); }
             _numberItemsCollected++;
             if (_numberItemsCollected >= _numberOfItemsForTrade)
@@ -47,4 +50,15 @@ public class TradePoint : MonoBehaviour
         //obj.transform.parent = null;
     }
 
+    public void GiveReward(GameObject gobj)
+    {
+        if (_numberItemsCollected >= _numberOfItemsForTrade && gobj != null)
+        {
+            _tradesCompleted++;
+            //if (_objToGive != null) { Instantiate(gobj, _spawnLocation.position, _spawnLocation.rotation); }
+            gobj.transform.position = _spawnLocation.position;
+            gobj.transform.rotation = _spawnLocation.rotation;
+
+        }
+    }
 }
