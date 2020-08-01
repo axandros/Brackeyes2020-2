@@ -43,7 +43,7 @@ public class TradePoint : MonoBehaviour
     void GiveReward()
     {
         _tradesCompleted++;
-        GameObject obj = Instantiate(_objToGive, _spawnLocation.position, _spawnLocation.rotation);
+        if (_objToGive != null) { Instantiate(_objToGive, _spawnLocation.position, _spawnLocation.rotation); }
         //obj.transform.parent = null;
     }
 
