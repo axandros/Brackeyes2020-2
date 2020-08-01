@@ -41,13 +41,13 @@ public class Pickup : MonoBehaviour
         }
         else if (mouseDown)
         {
-            Debug.Log("Mouse Down");
+            //Debug.Log("Mouse Down");
             RaycastHit hit;
             Ray screenRay = _playerview.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            Debug.DrawRay(screenRay.origin,screenRay.direction * _reach, Color.blue, 3.0f);
+            //Debug.DrawRay(screenRay.origin,screenRay.direction * _reach, Color.blue, 3.0f);
             if (Physics.Raycast(screenRay, out hit, _reach))
             {
-                Debug.Log("Found Something: " + hit.transform.name);
+                //Debug.Log("Found Something: " + hit.transform.name);
                 _holding = hit.transform.GetComponent<Rigidbody>();
                 if (_holding != null)
                 {
