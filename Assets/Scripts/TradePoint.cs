@@ -11,20 +11,38 @@ public class TradePoint : MonoBehaviour
     GameObject _objToGive = null;
 
     [SerializeField]
+    int _numberOfItemsForTrade = 1;
+    int _numberItemsCollected = 0;
+
+    public int TradesCompleted { get { return _numberItemsCollected; } }
+
+    [SerializeField]
     Transform _spawnLocation = null;
+
+    [SerializeField]
+    int _numberOfTrades = 1;
+    int _tradesCompleted = 0;
+
+    [SerializeField]
+    bool _destroyItem = true;
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered by " + other.name + " tagged " + other.tag);
-        if(other.tag == _tag)
+        //Debug.Log("Trigger entered by " + other.name + " tagged " + other.tag);
+        if(other.tag == _tag && _tradesCompleted < _numberOfTrades)
         {
-            Destroy(other.gameObject);
-            GiveReward();
+            if (_destroyItem) { Destroy(other.gameObject); }
+            _numberItemsCollected++;
+            if (_numberItemsCollected >= _numberOfItemsForTrade)
+            {
+                GiveReward();
+            }
         }
     }
 
     void GiveReward()
     {
+        _tradesCompleted++;
         GameObject obj = Instantiate(_objToGive, _spawnLocation.position, _spawnLocation.rotation);
         //obj.transform.parent = null;
     }

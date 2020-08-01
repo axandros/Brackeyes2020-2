@@ -16,7 +16,6 @@ public class Pickup : MonoBehaviour
     [SerializeField]
     LayerMask _pickupLayer;
 
-
     Rigidbody _holding = null;
 
     // Start is called before the first frame update
@@ -45,8 +44,9 @@ public class Pickup : MonoBehaviour
             RaycastHit hit;
             Ray screenRay = _playerview.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             //Debug.DrawRay(screenRay.origin,screenRay.direction * _reach, Color.blue, 3.0f);
-            if (Physics.Raycast(screenRay, out hit, _reach))
+            if (Physics.Raycast(screenRay, out hit, _reach, _pickupLayer))
             {
+
                 //Debug.Log("Found Something: " + hit.transform.name);
                 _holding = hit.transform.GetComponent<Rigidbody>();
                 if (_holding != null)
