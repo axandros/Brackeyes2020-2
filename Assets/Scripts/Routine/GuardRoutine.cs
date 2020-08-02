@@ -12,10 +12,14 @@ public class GuardRoutine : RoutineBase
     [SerializeField]
     Vector3 ScientistPosition = Vector3.zero;
 
+    [SerializeField]
+    Collider _largerCollision = null;
+
     public void GoToLunch()
     {
         if (!_helpingScientist)
         {
+            if(_largerCollision != null) { _largerCollision.enabled = false; }
             _navAgent.destination = LunchPosition;
             _atLunch = true;
         }
@@ -25,6 +29,7 @@ public class GuardRoutine : RoutineBase
     {
         if (!_atLunch)
         {
+            if (_largerCollision != null) { _largerCollision.enabled = false; }
             _navAgent.destination = LunchPosition;
             _helpingScientist = true;
         }
