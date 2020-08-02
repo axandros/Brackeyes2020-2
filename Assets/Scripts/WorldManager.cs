@@ -17,6 +17,10 @@ public class WorldManager : MonoBehaviour
     {
         get { return _lengthOfWorldInSeconds - _elapsedTime; }
     }
+    public float TimeElapsed
+    {
+        get { return _elapsedTime; }
+    }
 
 
     // Update is called once per frame
