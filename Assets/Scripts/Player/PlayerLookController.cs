@@ -10,6 +10,8 @@ public class PlayerLookController : MonoBehaviour
     float _smoothing = 2.0f;
     GameObject _character;
 
+    float _vertAngle = 0.0f;
+
     private Vector2 _mouseLook;
     private Vector2 _smoothV;
 
@@ -27,6 +29,17 @@ public class PlayerLookController : MonoBehaviour
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(_sensitivity * _smoothing, _sensitivity * _smoothing));
         _smoothV.x = Mathf.Lerp(_smoothV.x, mouseDelta.x, 1f / _smoothing);
         _smoothV.y = Mathf.Lerp(_smoothV.y, mouseDelta.y, 1f / _smoothing);
+
+        if(_vertAngle+_smoothV.y > 90.0f)
+        {
+            _smoothV.y = 90 - _vertAngle;
+            _vertAngle = 90;
+        }else if(_vertAngle + _smoothV.y < -90.0f)
+        {
+            _smoothV.y = -90 - _vertAngle;
+            _vertAngle = -90;
+        }
+        else { _vertAngle += _smoothV.y; }
 
         _mouseLook += _smoothV;
 
