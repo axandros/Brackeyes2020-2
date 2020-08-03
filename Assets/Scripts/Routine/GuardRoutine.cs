@@ -17,6 +17,7 @@ public class GuardRoutine : RoutineBase
 
     public void GoToLunch()
     {
+        Debug.Log("Running Guard GO_TO_LUNCH");
         if (!_helpingScientist)
         {
             if(_largerCollision != null) { _largerCollision.enabled = false; }
@@ -30,7 +31,7 @@ public class GuardRoutine : RoutineBase
         if (!_atLunch)
         {
             if (_largerCollision != null) { _largerCollision.enabled = false; }
-            _navAgent.destination = LunchPosition;
+            _navAgent.destination = ScientistPosition;
             _helpingScientist = true;
         }
     }

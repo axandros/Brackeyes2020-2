@@ -36,8 +36,10 @@ public class RoutineBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_scheduleIndex <Schedule.Count && _wm.TimeElapsed >= Schedule[_scheduleIndex].secondsPassed)
+        Debug.Log(this.transform.name + " Schedule Check: " + _scheduleIndex + " / " + Schedule.Count);
+        if (_scheduleIndex < Schedule.Count && _wm.TimeElapsed >= Schedule[_scheduleIndex].secondsPassed)
         {
+            Debug.Log(this.transform.name + " Invoking Task " + Schedule[_scheduleIndex].name);
             Schedule[_scheduleIndex].event_Task.Invoke();
             _scheduleIndex++;
         }
