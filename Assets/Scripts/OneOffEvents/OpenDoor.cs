@@ -7,7 +7,7 @@ public class OpenDoor : MonoBehaviour
 {
     [SerializeField]
     Vector3 _targetPosition;
-
+    
     bool moving = false;
     Vector3 _startPosition;
     public float TimeToMove = 3;
