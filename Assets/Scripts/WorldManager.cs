@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
+    static WorldManager _instance = null;
+    public static WorldManager Instance { get { return _instance; } }
+
     [SerializeField]
     int _lengthOfWorldInSeconds = 120;
 
@@ -17,11 +20,19 @@ public class WorldManager : MonoBehaviour
     {
         get { return _lengthOfWorldInSeconds - _elapsedTime; }
     }
+
     public float TimeElapsed
     {
         get { return _elapsedTime; }
     }
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        } else if(_instance != this) { Destroy(this.transform); }
+    }
 
     // Update is called once per frame
     void Update()
