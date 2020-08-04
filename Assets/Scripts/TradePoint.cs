@@ -9,8 +9,8 @@ public class TradePoint : MonoBehaviour
     [SerializeField]
     string _tag = "item";
 
-    [SerializeField]
-    GameObject _objToGive = null;
+    //[SerializeField]
+    //GameObject _objToGive = null;
 
     [SerializeField]
     int _numberOfItemsForTrade = 1;
@@ -46,7 +46,7 @@ public class TradePoint : MonoBehaviour
     void GiveReward()
     {
         _tradesCompleted++;
-        if (_objToGive != null) { Instantiate(_objToGive, _spawnLocation.position, _spawnLocation.rotation); }
+        //if (_objToGive != null) { Instantiate(_objToGive, _spawnLocation.position, _spawnLocation.rotation); }
         //obj.transform.parent = null;
     }
 
