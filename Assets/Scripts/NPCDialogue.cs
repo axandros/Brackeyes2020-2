@@ -6,6 +6,17 @@ using UnityEngine;
 public class NPCDialogue : MonoBehaviour
 {
     [SerializeField]
+    string _name = "";
+    public string Name { get
+        {
+            if(_name == "")
+            {
+                return this.transform.name;
+            }
+            return _name;
+        } }
+
+    [SerializeField]
     string _Introduction = "";
     bool _introPlayed = false;
 

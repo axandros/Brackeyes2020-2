@@ -10,6 +10,8 @@ TagManager:
   - GreenItem
   - MagentaItem
   - CyanItem
+  - WhiteItem
+  - BlackItem
   layers:
   - Default
   - TransparentFX
