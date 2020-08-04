@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class DialogueSystem : MonoBehaviour
 {
     string _textToDisplay = "";
+    [SerializeField]
     Text _textComponent = null;
     Image _backgroundImage = null;
+    [SerializeField]
+    Text _nameText = null;
 
     public float timeBetweenLetters = 0.2f;
     public float timeToRemainOpen = 1.0f;
@@ -47,7 +50,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public bool ChangeDisplayText( string toDisplay)
+    public bool ChangeDisplayText( string toDisplay, string Name)
     {
         bool ret = false;
         if (_timeSinceComplete > timeToRemainOpen || _textToDisplay.Length == 0)
@@ -59,6 +62,7 @@ public class DialogueSystem : MonoBehaviour
             _textComponent.text = "";
             _timeSinceComplete = 0.0f;
             _timeSinceLastLetter = 0.0f;
+            _nameText.text = Name;
         }
         return ret;
     }
@@ -69,6 +73,7 @@ public class DialogueSystem : MonoBehaviour
             _textComponent.text = "";
             _backgroundImage.enabled = false;
             _textComponent.enabled = false;
+            _nameText.text = "";
         }
     }
 }

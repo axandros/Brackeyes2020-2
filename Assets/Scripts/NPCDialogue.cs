@@ -53,7 +53,7 @@ public class NPCDialogue : MonoBehaviour
         
         if (!_introPlayed)
         {
-            if (_ds.ChangeDisplayText(_Introduction))
+            if (_ds.ChangeDisplayText(_Introduction, Name))
             {
                 _introPlayed = true;
             }
@@ -65,7 +65,7 @@ public class NPCDialogue : MonoBehaviour
             {
                 diag = _Request;
             }
-            _ds.ChangeDisplayText(diag);
+            _ds.ChangeDisplayText(diag, Name);
         }
         
     }
