@@ -318,7 +318,7 @@ MonoBehaviour:
   OnTrade:
     m_PersistentCalls:
       m_Calls: []
-  _tag: BlueItem
+  _tag: YellowItem
   _numberOfItemsForTrade: 1
   _spawnLocation: {fileID: 685338512}
   _numberOfTrades: 1
@@ -2787,17 +2787,17 @@ PrefabInstance:
     - target: {fileID: 7439467136698647808, guid: aeda9ffde81c6dc479382e78cf373ea5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.825476
+      value: 24.79
       objectReference: {fileID: 0}
     - target: {fileID: 7439467136698647808, guid: aeda9ffde81c6dc479382e78cf373ea5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0344296
+      value: 16.2
       objectReference: {fileID: 0}
     - target: {fileID: 7439467136698647808, guid: aeda9ffde81c6dc479382e78cf373ea5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.380579
+      value: 9.09
       objectReference: {fileID: 0}
     - target: {fileID: 7439467136698647808, guid: aeda9ffde81c6dc479382e78cf373ea5,
         type: 3}
@@ -4355,17 +4355,17 @@ PrefabInstance:
     - target: {fileID: 3270651193990715409, guid: 4bcd0c70e98aeed459e61fc84cb7efe4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.111956
+      value: 28.07648
       objectReference: {fileID: 0}
     - target: {fileID: 3270651193990715409, guid: 4bcd0c70e98aeed459e61fc84cb7efe4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.710909
+      value: 16.523521
       objectReference: {fileID: 0}
     - target: {fileID: 3270651193990715409, guid: 4bcd0c70e98aeed459e61fc84cb7efe4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.038422
+      value: 16.747843
       objectReference: {fileID: 0}
     - target: {fileID: 3270651193990715409, guid: 4bcd0c70e98aeed459e61fc84cb7efe4,
         type: 3}
@@ -4685,7 +4685,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _tag: PurpleItem
+  _tag: MagentaItem
   _numberOfItemsForTrade: 1
   _spawnLocation: {fileID: 276656890}
   _numberOfTrades: 1

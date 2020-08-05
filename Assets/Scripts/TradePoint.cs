@@ -33,13 +33,10 @@ public class TradePoint : MonoBehaviour
         //Debug.Log("Trigger entered by " + other.name + " tagged " + other.tag);
         if(other.tag == _tag && _tradesCompleted < _numberOfTrades)
         {
-            OnTrade.Invoke();
+            //Debug.Log("OnTrade Invoking");
             if (_destroyItem) { Destroy(other.gameObject); }
             _numberItemsCollected++;
-            if (_numberItemsCollected >= _numberOfItemsForTrade)
-            {
-                GiveReward();
-            }
+            OnTrade.Invoke();
         }
     }
 
@@ -58,6 +55,7 @@ public class TradePoint : MonoBehaviour
             //if (_objToGive != null) { Instantiate(gobj, _spawnLocation.position, _spawnLocation.rotation); }
             gobj.transform.position = _spawnLocation.position;
             gobj.transform.rotation = _spawnLocation.rotation;
+            //Debug.Log("Position: " + _spawnLocation.position + " | Item: " + gobj.transform.position);
 
         }
     }
