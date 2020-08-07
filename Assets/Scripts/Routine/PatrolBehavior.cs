@@ -14,8 +14,6 @@ public class PatrolBehavior : RoutineBase
     int _wayPointIndex = 0;
     float _atWaypoint;
 
-    static DialogueSystem _ds = null;
-
     public void StartPatrol()
     {
         _navAgent.isStopped = false;
@@ -29,7 +27,6 @@ public class PatrolBehavior : RoutineBase
     protected new void Start()
     {
         base.Start();
-        if (_ds == null) { _ds = FindObjectOfType<DialogueSystem>(); }
         _dialogue.OnStartTalking.AddListener(StopPatrol);
         _ds.OnDialogueStop.AddListener(StartPatrol);
         StartPatrol();
@@ -44,7 +41,7 @@ public class PatrolBehavior : RoutineBase
             if(_atWaypoint > _timeAtWaypoint)
             {
                 _wayPointIndex++;
-                if (_wayPointIndex > _patrolWaypoints.Count)
+                if (_wayPointIndex >= _patrolWaypoints.Count)
                 {
                     _wayPointIndex = 0;
                 }

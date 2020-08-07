@@ -6,9 +6,32 @@ using UnityEngine;
 public class GoToRoutine : RoutineBase
 {
     [SerializeField]
-    Vector3 location = Vector3.zero;
-    public void GoToLocation()
+    List<Vector3> location = new List<Vector3>();
+
+    int _storedIndex = 0;
+    public void GoToLocation(int index)
     {
-        _navAgent.SetDestination(location);
+        if (index < location.Count && index >= 0)
+        {
+            _storedIndex = index;
+            _navAgent.SetDestination(location[index]);
+        }
+    }
+
+    public void StopWalk()
+    {
+        _navAgent.isStopped = true;
+    }
+
+    public void StartWalk()
+    {
+        GoToLocation(_storedIndex);
+    }
+
+    protected new void Start()
+    {
+        base.Start();
+        _dialogue.OnStartTalking.AddListener(StopWalk);
+        _ds.OnDialogueStop.AddListener(StartWalk);
     }
 }
