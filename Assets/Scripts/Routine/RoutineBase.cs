@@ -23,18 +23,20 @@ public class RoutineBase : MonoBehaviour
 
     static WorldManager _wm;
     protected NavMeshAgent _navAgent;
+    protected NPCDialogue _dialogue;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         if (_wm == null) { _wm = FindObjectOfType<WorldManager>(); }
         Schedule.Sort((s1, s2) => s1.secondsPassed.CompareTo(s2.secondsPassed));
         _navAgent = GetComponent<NavMeshAgent>();
+        _dialogue = GetComponent<NPCDialogue>();
 
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         Debug.Log(this.transform.name + " Schedule Check: " + _scheduleIndex + " / " + Schedule.Count);
         if (_scheduleIndex < Schedule.Count && _wm.TimeElapsed >= Schedule[_scheduleIndex].secondsPassed)

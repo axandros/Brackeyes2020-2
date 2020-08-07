@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCDialogue : MonoBehaviour
 {
+    public UnityEvent OnStartTalking;
+
     [SerializeField]
     string _name = "";
     public string Name { get
@@ -50,7 +53,7 @@ public class NPCDialogue : MonoBehaviour
 
     public void Dialogue()
     {
-        
+        OnStartTalking.Invoke();
         if (!_introPlayed)
         {
             if (_ds.ChangeDisplayText(_Introduction, Name))

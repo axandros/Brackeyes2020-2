@@ -6,7 +6,7 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField]
-    Vector3 _targetPosition;
+    Vector3 _targetPosition = Vector3.zero;
     
     bool moving = false;
     Vector3 _startPosition;

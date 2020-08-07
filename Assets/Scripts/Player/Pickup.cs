@@ -14,7 +14,7 @@ public class Pickup : MonoBehaviour
     float _throwingForce = 500.0f;
 
     [SerializeField]
-    LayerMask _pickupLayer;
+    LayerMask _pickupLayer = 0;
 
     Rigidbody _holding = null;
 
