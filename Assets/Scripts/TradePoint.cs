@@ -9,6 +9,8 @@ public class TradePoint : MonoBehaviour
     [SerializeField]
     string _tag = "item";
 
+    AudioSource _sound = null;
+
     //[SerializeField]
     //GameObject _objToGive = null;
 
@@ -28,11 +30,17 @@ public class TradePoint : MonoBehaviour
     [SerializeField]
     bool _destroyItem = true;
 
+    private void Start()
+    {
+        _sound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Trigger entered by " + other.name + " tagged " + other.tag);
         if(other.tag == _tag && _tradesCompleted < _numberOfTrades)
         {
+            if (_sound) { _sound.PlayOneShot(_sound.clip); }
             //Debug.Log("OnTrade Invoking");
             if (_destroyItem) { Destroy(other.gameObject); }
             _numberItemsCollected++;

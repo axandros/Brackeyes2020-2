@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pickup : MonoBehaviour
 {
+    public UnityEvent OnPickup;
+
     [SerializeField]
     Camera _playerview;
     
@@ -17,6 +20,18 @@ public class Pickup : MonoBehaviour
     LayerMask _pickupLayer = 0;
 
     Rigidbody _holding = null;
+
+    public GameObject ObjectSeen()
+    {
+        RaycastHit hit;
+        Ray screenRay = _playerview.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        //Debug.DrawRay(screenRay.origin,screenRay.direction * _reach, Color.blue, 3.0f);
+        if (Physics.Raycast(screenRay, out hit, _reach, _pickupLayer))
+        {
+            return hit.transform.gameObject;
+        }
+        return null;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +61,10 @@ public class Pickup : MonoBehaviour
             //Debug.DrawRay(screenRay.origin,screenRay.direction * _reach, Color.blue, 3.0f);
             if (Physics.Raycast(screenRay, out hit, _reach, _pickupLayer))
             {
-
+                if (hit.transform.gameObject != null)
+                {
+                    OnPickup.Invoke();
+                }
                 //Debug.Log("Found Something: " + hit.transform.name);
                 _holding = hit.transform.GetComponent<Rigidbody>();
                 if (_holding != null)

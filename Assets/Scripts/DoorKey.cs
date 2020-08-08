@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DoorKey : MonoBehaviour
 {
+    public UnityEvent PlayerEnter;
+    public UnityEvent PlayerExit;
+
     [SerializeField]
     Text _numberDisplayText = null;
 
     GameObject _player = null;
+    AudioSource _sound = null;
 
     List<int> _inputNum = new List<int>();
 
     [SerializeField]
     bool _playerHere = false;
+    public bool PlayerHere { get { return _playerHere; } }
 
     [SerializeField]
     Vector3 _openPosition = Vector3.zero;
@@ -31,6 +37,7 @@ public class DoorKey : MonoBehaviour
         if (_player == null) { _player = GameObject.FindGameObjectWithTag("Player"); }
         if(_numberDisplayText == null) { _numberDisplayText = GetComponentInChildren<Text>(); }
         _adjustedOpenPosition = _openPosition + transform.position;
+        _sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -111,6 +118,7 @@ public class DoorKey : MonoBehaviour
     {
         Debug.Log("Wrong code input.  Clearing input.");
         // Play a sound
+        _sound.PlayOneShot(_sound.clip);
         // Clear Text
         _numberDisplayText.text = "";
         // Clear Entry
@@ -119,9 +127,10 @@ public class DoorKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered enter");
+        //Debug.Log("Triggered enter");
         if (_player != null && other.gameObject == _player)
         {
+            PlayerEnter.Invoke();
             _playerHere = true;
         }
     }
@@ -130,6 +139,7 @@ public class DoorKey : MonoBehaviour
     {
         if (_player != null && other.gameObject == _player)
         {
+            PlayerExit.Invoke();
             _playerHere = false;
         }
     }
