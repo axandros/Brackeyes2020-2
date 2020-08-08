@@ -7,7 +7,15 @@ public class WorldManager : MonoBehaviour
 {
     static WorldManager _instance = null;
     public static WorldManager Instance { get { return _instance; } }
-    static int _randNumber = 0;
+    int _randNumber = 0;
+    List<int> _keyNumber = new List<int>();
+    public static List<int> KeyNumber
+    {
+        get
+        {
+            return Instance._keyNumber;
+        }
+    }
 
     [SerializeField]
     int _lengthOfWorldInSeconds = 120;
@@ -30,6 +38,12 @@ public class WorldManager : MonoBehaviour
     private void Awake()
     {
         int num = (int)( Random.value * 100.0f);
+        _keyNumber.Add(0);
+        _keyNumber.Add(1);
+        _keyNumber.Add(2);
+        _keyNumber.Add(3);
+        _keyNumber.Add(4);
+        _keyNumber.Add(5);
         //Debug.Log("World Manager Awake: " + this.transform.name + " #" + num);
         if (_instance == null)
         {

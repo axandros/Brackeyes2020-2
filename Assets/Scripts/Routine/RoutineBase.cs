@@ -48,10 +48,10 @@ public class RoutineBase : MonoBehaviour
 
     private void ScheduleUpdate()
     {
-        Debug.Log(this.transform.name + " Schedule Check: " + _scheduleIndex + " / " + Schedule.Count);
+        //Debug.Log(this.transform.name + " Schedule Check: " + _scheduleIndex + " / " + Schedule.Count);
         if (_scheduleIndex < Schedule.Count && _wm.TimeElapsed >= Schedule[_scheduleIndex].secondsPassed)
         {
-            Debug.Log(this.transform.name + " Invoking Task " + Schedule[_scheduleIndex].name);
+            //Debug.Log(this.transform.name + " Invoking Task " + Schedule[_scheduleIndex].name);
             Schedule[_scheduleIndex].event_Task.Invoke();
             _scheduleIndex++;
         }
@@ -60,7 +60,7 @@ public class RoutineBase : MonoBehaviour
     private void FacePlayer()
     {
         // Are we stopped?
-        if (_navAgent.velocity.magnitude < 0.1f){
+        if (_navAgent != null &&_navAgent.velocity.magnitude < 0.1f){
             // >Is the player close?
             float dist = Mathf.Abs((_player.transform.position - transform.position).magnitude);
             if (dist < 10) {
