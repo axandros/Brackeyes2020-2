@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueSystem : MonoBehaviour
 {
+    public UnityEvent OnDialogueStop;
+
     string _textToDisplay = "";
     [SerializeField]
     Text _textComponent = null;
@@ -69,6 +72,7 @@ public class DialogueSystem : MonoBehaviour
     public void Close()
     {
         if (_timeSinceComplete > timeToRemainOpen && _textToDisplay.Length != 0) {
+            OnDialogueStop.Invoke();
             _textToDisplay = "";
             _textComponent.text = "";
             _backgroundImage.enabled = false;

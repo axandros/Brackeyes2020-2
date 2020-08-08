@@ -20,12 +20,15 @@ public class TimerCountdownUI : MonoBehaviour
     {
         if (_wm != null && _text != null)
         {
+            /*
             int minutes = (int)_wm.TimeRemaining / 60;
             int seconds = (int)_wm.TimeRemaining % 60;
             //Debug.Log("Time Remaining: "+ _wm.TimeRemaining + " minutes: " + minutes + "seconds: " + seconds);
 
             _text.text = minutes.ToString() + ":" + seconds.ToString();
-                }
+            */
+            _text.text = ((int)_wm.TimeRemaining).ToString();
+        }
     }
 }
 
